@@ -287,10 +287,10 @@
     <a href="#contact" class="btn-line-dark">Start Your Project</a>
   </div>
   <div class="work-grid">
-    <div class="wc wc-a reveal"><div class="wc-tag">Live</div><div class="wc-img"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&auto=format&fit=crop" alt="Ember and Salt"/></div><div class="wc-info"><div><div class="wc-name">Ember &amp; Salt</div><div class="wc-type">Restaurant · St. John's, Antigua</div></div><div class="wc-arrow">↗</div></div></div>
+    <div class="wc wc-a reveal" onclick="window.open('https://emberansalt.netlify.app','_blank')" style="cursor:pointer;"><div class="wc-tag">Live</div><div class="wc-img"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&auto=format&fit=crop" alt="Ember and Salt"/></div><div class="wc-info"><div><div class="wc-name">Ember &amp; Salt</div><div class="wc-type">Restaurant · St. John's, Antigua</div></div><div class="wc-arrow">↗</div></div></div>
     <div class="wc wc-b reveal d1"><div class="wc-tag">Soon</div><div class="wc-img"><img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=900&auto=format&fit=crop" alt="Barbershop"/></div><div class="wc-info"><div><div class="wc-name">The Cut Room</div><div class="wc-type">Barbershop · In Progress</div></div><div class="wc-arrow">↗</div></div></div>
     <div class="wc wc-c reveal"><div class="wc-tag">Soon</div><div class="wc-img"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=900&auto=format&fit=crop" alt="Guesthouse"/></div><div class="wc-info"><div><div class="wc-name">Coral Bay Stays</div><div class="wc-type">Guesthouse · In Progress</div></div><div class="wc-arrow">↗</div></div></div>
-    <div class="wc wc-d reveal d1"><div class="wc-tag">Soon</div><div class="wc-img"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=900&auto=format&fit=crop" alt="Auto Detail"/></div><div class="wc-info"><div><div class="wc-name">Island Auto Detail</div><div class="wc-type">Auto Detailing · In Progress</div></div><div class="wc-arrow">↗</div></div></div>
+    <div class="wc wc-d reveal d1" onclick="window.open('https://islandautodetail.netlify.app','_blank')" style="cursor:pointer;"><div class="wc-tag">Soon</div><div class="wc-img"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=900&auto=format&fit=crop" alt="Auto Detail"/></div><div class="wc-info"><div><div class="wc-name">Island Auto Detail</div><div class="wc-type">Auto Detailing · In Progress</div></div><div class="wc-arrow">↗</div></div></div>
   </div>
 </section>
 
@@ -315,8 +315,8 @@
     <div class="rule"></div>
     <p class="contact-tagline">Whether you need a simple landing page or a full business website — we're ready. Tell us about your project and we'll get back to you within 24 hours.</p>
     <div class="cinfo">
-      <div><div class="ci-label">Email</div><div class="ci-val">hello@afkco.com</div></div>
-      <div><div class="ci-label">WhatsApp</div><div class="ci-val">+1 (268) 555-0100</div></div>
+      <div><div class="ci-label">Email</div><div class="ci-val">afkcoshop@outlook.com</div></div>
+      <div><div class="ci-label">WhatsApp</div><div class="ci-val">+1 (268) 780-3746</div></div>
       <div><div class="ci-label">Based In</div><div class="ci-val">St. John's, Antigua and Barbuda</div></div>
     </div>
   </div>
@@ -347,7 +347,7 @@
   <div class="ft-top">
     <div class="ft-logo">AFK<span>Co.</span></div>
     <div class="ft-tagline">Premium Web Design · Est. 2025 · Antigua &amp; Barbuda</div>
-    <div class="ft-links"><a href="#">Instagram</a><a href="#">WhatsApp</a><a href="#contact">Email</a></div>
+    <div class="ft-links"><a href="#" style="opacity:0.3;pointer-events:none;">Instagram (Coming Soon)</a><a href="https://wa.me/12687803746">WhatsApp</a><a href="mailto:afkcoshop@outlook.com">Email</a></div>
   </div>
   <div class="ft-bottom">
     <div class="ft-copy">© 2025 AFK Co. All rights reserved.</div>
@@ -363,5 +363,13 @@
   },{threshold:0.08});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
+<script>
+document.querySelectorAll(".wc-a").forEach(el=>el.addEventListener("click",()=>window.open("https://emberansalt.netlify.app","_blank")));
+document.querySelectorAll(".wc-d").forEach(el=>el.addEventListener("click",()=>window.open("https://islandautodetail.netlify.app","_blank")));
+document.querySelectorAll(".wc-a,.wc-d").forEach(el=>el.style.cursor="pointer");
+</script>
 </body>
 </html>
+<script>
+// This will be added inline - ignore, doing it properly below
+</script>
