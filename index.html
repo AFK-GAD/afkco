@@ -3,123 +3,183 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AFK Co. — Web Design</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <title>AFK Co. — Web Design Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
     :root{
-      --bg:#0a0a0b;--bg2:#111113;--bg3:#18181c;
-      --accent:#ff6b2b;--accent2:#e5571a;
-      --text:#f0f0f0;--muted:#6b6b78;--border:rgba(255,255,255,0.07);
-      --serif:'Syne',sans-serif;--sans:'Space Grotesk',sans-serif;
+      --bg:#ffffff;--bg2:#f7f5f3;--bg3:#f0ede9;--bg4:#e8e3dd;
+      --orange:#e8622a;--orange2:#f07840;--orange-dark:#c44f1e;
+      --text:#1a1714;--muted:#7a7068;--subtle:#c5bdb5;
+      --border:rgba(26,23,20,0.08);--border-orange:rgba(232,98,42,0.2);
+      --serif:'Playfair Display',Georgia,serif;
+      --sans:'DM Sans',sans-serif;
     }
     html{scroll-behavior:smooth;}
-    body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;overflow-x:hidden;}
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5rem;border-bottom:1px solid transparent;transition:all 0.4s;}
-    nav.scrolled{background:rgba(10,10,11,0.95);border-color:var(--border);backdrop-filter:blur(12px);}
-    .nav-logo{font-family:var(--serif);font-size:1.4rem;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:-0.02em;}
-    .nav-logo span{color:var(--accent);}
-    .nav-links{display:flex;gap:2.5rem;list-style:none;}
-    .nav-links a{font-size:0.8rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.3s;}
+    body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;overflow-x:hidden;}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.8rem 5rem;transition:all 0.4s;background:rgba(255,255,255,0);}
+    nav.scrolled{background:rgba(255,255,255,0.97);padding:1.2rem 5rem;border-bottom:1px solid var(--border);backdrop-filter:blur(20px);box-shadow:0 1px 24px rgba(0,0,0,0.04);}
+    .nav-logo{font-family:var(--serif);font-size:1.6rem;font-weight:700;color:var(--text);text-decoration:none;}
+    .nav-logo span{color:var(--orange);font-style:italic;}
+    .nav-links{display:flex;gap:3rem;list-style:none;}
+    .nav-links a{font-size:0.75rem;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.3s;}
     .nav-links a:hover{color:var(--text);}
-    .nav-cta{font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--bg);background:var(--accent);padding:0.6rem 1.4rem;text-decoration:none;border-radius:2px;transition:background 0.3s;}
-    .nav-cta:hover{background:var(--accent2);}
-    #home{min-height:100vh;display:flex;align-items:center;padding:10rem 5rem 6rem;position:relative;overflow:hidden;}
-    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,107,43,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,107,43,0.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%);}
-    .hero-content{position:relative;z-index:2;max-width:900px;}
-    .hero-tag{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.75rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(255,107,43,0.25);padding:0.4rem 1rem;border-radius:100px;margin-bottom:2rem;}
-    .hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;}
-    .hero-title{font-family:var(--serif);font-size:clamp(3.5rem,9vw,7.5rem);font-weight:800;line-height:0.95;letter-spacing:-0.03em;color:var(--text);margin-bottom:2rem;}
-    .hero-title .outline{-webkit-text-stroke:1px rgba(240,240,240,0.3);color:transparent;}
-    .hero-title .accent{color:var(--accent);}
-    .hero-sub{font-size:1.1rem;font-weight:300;color:var(--muted);max-width:480px;line-height:1.75;margin-bottom:3rem;}
-    .hero-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;}
-    .btn-main{font-size:0.82rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--bg);background:var(--accent);padding:1rem 2.4rem;text-decoration:none;border-radius:2px;transition:background 0.3s;}
-    .btn-main:hover{background:var(--accent2);}
-    .btn-ghost{font-size:0.82rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:0.5rem;transition:color 0.3s;}
-    .btn-ghost:hover{color:var(--text);}
-    .btn-ghost::after{content:'→';}
-    .hero-scroll-line{position:absolute;bottom:3rem;left:5rem;display:flex;align-items:center;gap:1rem;font-size:0.68rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--muted);}
-    .hero-scroll-line::before{content:'';width:40px;height:1px;background:var(--muted);}
-    .marquee-wrap{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1.2rem 0;overflow:hidden;background:var(--bg2);}
-    .marquee-track{display:flex;gap:3rem;animation:marquee 20s linear infinite;white-space:nowrap;}
-    .marquee-item{font-family:var(--serif);font-size:0.8rem;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:1rem;}
-    .marquee-dot{width:4px;height:4px;border-radius:50%;background:var(--accent);flex-shrink:0;}
-    section{padding:8rem 5rem;}
-    .section-num{font-size:0.72rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;}
-    .section-title{font-family:var(--serif);font-size:clamp(2.2rem,5vw,4rem);font-weight:800;line-height:1.0;letter-spacing:-0.02em;color:var(--text);}
-    .section-title .outline{-webkit-text-stroke:1px rgba(240,240,240,0.2);color:transparent;}
-    .section-header{margin-bottom:5rem;}
+    .nav-cta{font-size:0.72rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:#fff;background:var(--orange);padding:0.7rem 1.6rem;text-decoration:none;transition:background 0.3s;}
+    .nav-cta:hover{background:var(--orange-dark);}
+
+    /* HERO */
+    #home{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:0;overflow:hidden;}
+    .hero-left{padding:10rem 4rem 6rem 5rem;position:relative;}
+    .hero-left::after{content:'';position:absolute;top:0;right:0;width:1px;height:100%;background:linear-gradient(to bottom,transparent,var(--border),transparent);}
+    .hero-right{background:var(--orange);min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:10rem 4rem 6rem 5rem;position:relative;overflow:hidden;}
+    .hero-right-pattern{position:absolute;inset:0;opacity:0.07;background-image:radial-gradient(circle,#fff 1px,transparent 1px);background-size:28px 28px;}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:0.8rem;font-size:0.7rem;font-weight:400;letter-spacing:0.35em;text-transform:uppercase;color:var(--orange);margin-bottom:2rem;}
+    .hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--orange);}
+    .hero-title{font-family:var(--serif);font-size:clamp(3rem,6vw,5.5rem);font-weight:900;line-height:0.95;letter-spacing:-0.02em;color:var(--text);margin-bottom:2.5rem;}
+    .hero-title em{font-style:italic;color:var(--orange);}
+    .hero-sub{font-size:0.95rem;font-weight:300;color:var(--muted);max-width:420px;line-height:1.85;margin-bottom:3rem;}
+    .hero-actions{display:flex;gap:1.2rem;flex-wrap:wrap;}
+    .btn-fill{font-size:0.75rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#fff;background:var(--orange);padding:1rem 2.6rem;text-decoration:none;transition:background 0.3s;}
+    .btn-fill:hover{background:var(--orange-dark);}
+    .btn-fill-inv{font-size:0.75rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--orange);background:#fff;padding:1rem 2.6rem;text-decoration:none;transition:all 0.3s;}
+    .btn-fill-inv:hover{background:var(--orange-dark);color:#fff;}
+    .btn-line-dark{font-size:0.75rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:1rem 2.6rem;text-decoration:none;transition:all 0.3s;}
+    .btn-line-dark:hover{border-color:var(--orange);color:var(--orange);}
+    .btn-line-white{font-size:0.75rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.3);padding:1rem 2.6rem;text-decoration:none;transition:all 0.3s;}
+    .btn-line-white:hover{border-color:#fff;color:#fff;}
+    .hero-right-eyebrow{font-size:0.68rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:2rem;position:relative;z-index:2;}
+    .hero-right-title{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,3rem);font-weight:700;color:#fff;line-height:1.1;letter-spacing:-0.02em;margin-bottom:1.5rem;position:relative;z-index:2;}
+    .hero-right-sub{font-size:0.88rem;color:rgba(255,255,255,0.7);line-height:1.8;margin-bottom:3rem;max-width:380px;position:relative;z-index:2;}
+    .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:2rem;position:relative;z-index:2;padding-top:2.5rem;border-top:1px solid rgba(255,255,255,0.2);}
+    .hstat-num{font-family:var(--serif);font-size:2.5rem;font-weight:900;color:#fff;line-height:1;}
+    .hstat-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-top:0.3rem;}
+
+    /* TICKER */
+    .ticker{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1rem 0;overflow:hidden;background:var(--bg2);}
+    .ticker-track{display:flex;gap:3.5rem;animation:ticker 22s linear infinite;white-space:nowrap;}
+    .ticker-item{display:flex;align-items:center;gap:1rem;font-size:0.7rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--muted);}
+    .ticker-dot{width:3px;height:3px;border-radius:50%;background:var(--orange);flex-shrink:0;}
+
+    /* COMMON */
+    section{padding:9rem 5rem;}
+    .label{font-size:0.65rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--orange);margin-bottom:1.2rem;}
+    .heading{font-family:var(--serif);font-size:clamp(2rem,4.5vw,3.6rem);font-weight:700;line-height:1.05;letter-spacing:-0.02em;color:var(--text);}
+    .heading em{font-style:italic;color:var(--orange);}
+    .rule{width:36px;height:2px;background:var(--orange);margin:1.8rem 0;}
+
+    /* ABOUT */
+    #about{background:var(--bg2);display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center;}
+    .about-body{font-size:0.93rem;color:var(--muted);line-height:1.9;margin-bottom:1.2rem;}
+    .about-quote-box{background:var(--orange);padding:2.5rem;margin-bottom:2rem;}
+    .about-quote{font-family:var(--serif);font-size:1.3rem;font-style:italic;font-weight:400;color:#fff;line-height:1.5;}
+    .about-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);}
+    .astat{background:var(--bg2);padding:2rem 1.8rem;}
+    .astat-num{font-family:var(--serif);font-size:2.6rem;font-weight:900;color:var(--orange);line-height:1;}
+    .astat-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-top:0.4rem;}
+
+    /* SERVICES */
     #services{background:var(--bg);}
-    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
-    .service-card{background:var(--bg);padding:3rem 2.5rem;transition:background 0.3s;}
-    .service-card:hover{background:var(--bg3);}
-    .service-num{font-size:0.68rem;letter-spacing:0.25em;color:var(--muted);margin-bottom:2rem;}
-    .service-icon{font-size:2rem;margin-bottom:1.5rem;}
-    .service-name{font-family:var(--serif);font-size:1.4rem;font-weight:700;color:var(--text);margin-bottom:1rem;}
-    .service-desc{font-size:0.85rem;color:var(--muted);line-height:1.75;}
-    .service-price{margin-top:2rem;font-size:0.8rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);}
-    #work{background:var(--bg2);}
-    .work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:4rem;}
-    .work-card{position:relative;overflow:hidden;border:1px solid var(--border);}
-    .work-card-img{height:300px;overflow:hidden;}
-    .work-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;filter:brightness(0.8);}
-    .work-card:hover .work-card-img img{transform:scale(1.04);}
-    .work-card-info{padding:1.8rem 2rem;background:var(--bg3);display:flex;justify-content:space-between;align-items:center;}
-    .work-card-name{font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--text);}
-    .work-card-tag{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem;}
-    .work-card-arrow{font-size:1.2rem;color:var(--accent);transition:transform 0.3s;}
-    .work-card:hover .work-card-arrow{transform:translate(4px,-4px);}
-    .work-card-badge{position:absolute;top:1.2rem;left:1.2rem;font-size:0.65rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--bg);background:var(--accent);padding:0.3rem 0.8rem;border-radius:2px;}
-    #about{background:var(--bg);display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center;}
-    .about-tag{font-size:0.72rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;}
-    .about-title{font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);font-weight:800;line-height:1.05;letter-spacing:-0.02em;color:var(--text);margin-bottom:2rem;}
-    .about-body{font-size:0.95rem;color:var(--muted);line-height:1.85;margin-bottom:1.2rem;}
-    .about-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-top:3rem;padding-top:3rem;border-top:1px solid var(--border);}
-    .stat-val{font-family:var(--serif);font-size:3rem;font-weight:800;color:var(--accent);letter-spacing:-0.02em;line-height:1;}
-    .stat-label{font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-top:0.4rem;}
-    .about-box{background:var(--bg3);border:1px solid var(--border);padding:3rem;height:440px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;}
-    .about-box-tag{font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:auto;}
-    .about-box-quote{font-family:var(--serif);font-size:1.6rem;font-weight:700;line-height:1.3;color:var(--text);}
-    .about-box-quote span{color:var(--accent);}
-    .about-box-sub{font-size:0.82rem;color:var(--muted);margin-top:1.5rem;}
-    .about-accent{position:absolute;top:-16px;right:-16px;width:100px;height:100px;border:1px solid rgba(255,107,43,0.15);}
-    #process{background:var(--bg2);}
-    .process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin-top:5rem;}
-    .step{background:var(--bg2);padding:3rem 2rem;}
-    .step-num{font-family:var(--serif);font-size:3rem;font-weight:800;color:rgba(255,107,43,0.12);margin-bottom:1.5rem;}
-    .step-name{font-family:var(--serif);font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:0.75rem;}
-    .step-desc{font-size:0.82rem;color:var(--muted);line-height:1.7;}
-    #contact{background:var(--bg);}
-    .contact-inner{max-width:680px;}
-    .contact-title{font-family:var(--serif);font-size:clamp(2.5rem,6vw,5rem);font-weight:800;line-height:0.95;letter-spacing:-0.03em;color:var(--text);margin-bottom:3rem;}
-    .contact-title span{color:var(--accent);}
-    .contact-form{display:flex;flex-direction:column;gap:1rem;}
-    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-    .form-group{display:flex;flex-direction:column;gap:0.4rem;}
-    .form-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);}
-    .form-input,.form-select,.form-textarea{background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:var(--sans);font-size:0.9rem;padding:0.9rem 1.1rem;outline:none;transition:border-color 0.3s;width:100%;}
-    .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:rgba(255,107,43,0.4);}
-    .form-select option{background:var(--bg);}
-    .form-textarea{resize:vertical;min-height:120px;}
-    .form-submit{font-family:var(--sans);font-size:0.8rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--bg);background:var(--accent);border:none;padding:1.1rem 2.8rem;cursor:pointer;transition:background 0.3s;align-self:flex-start;border-radius:2px;}
-    .form-submit:hover{background:var(--accent2);}
-    footer{background:var(--bg2);padding:2.5rem 5rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);}
-    .footer-logo{font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--text);}
-    .footer-logo span{color:var(--accent);}
-    .footer-mid{font-size:0.75rem;color:var(--muted);}
-    .footer-links{display:flex;gap:2rem;}
-    .footer-links a{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.3s;}
-    .footer-links a:hover{color:var(--accent);}
-    @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
-    @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-    .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease;}
+    .services-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4.5rem;}
+    .service-list{border-top:1px solid var(--border);}
+    .srow{display:grid;grid-template-columns:60px 1fr 1fr 140px;align-items:center;gap:2rem;padding:2.2rem 0;border-bottom:1px solid var(--border);transition:padding 0.3s,background 0.3s;}
+    .srow:hover{padding-left:1.5rem;background:var(--bg2);}
+    .srow:hover .srow-name{color:var(--orange);}
+    .srow-num{font-size:0.65rem;letter-spacing:0.2em;color:var(--subtle);}
+    .srow-name{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--text);transition:color 0.3s;}
+    .srow-desc{font-size:0.82rem;color:var(--muted);line-height:1.65;padding-right:1rem;}
+    .srow-price{font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--orange);text-align:right;}
+
+    /* WORK */
+    #work{background:var(--bg3);}
+    .work-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem;}
+    .work-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1.2rem;}
+    .wc{overflow:hidden;position:relative;background:var(--bg2);}
+    .wc-a{grid-column:span 7;}
+    .wc-b{grid-column:span 5;}
+    .wc-c{grid-column:span 5;}
+    .wc-d{grid-column:span 7;}
+    .wc-img{overflow:hidden;}
+    .wc-a .wc-img,.wc-b .wc-img,.wc-c .wc-img,.wc-d .wc-img{height:340px;}
+    .wc-img img{width:100%;height:100%;object-fit:cover;filter:brightness(0.9);transition:transform 0.7s ease,filter 0.4s;}
+    .wc:hover .wc-img img{transform:scale(1.04);filter:brightness(1);}
+    .wc-info{padding:1.6rem 1.8rem;background:#fff;display:flex;justify-content:space-between;align-items:center;border-top:2px solid transparent;transition:border-color 0.3s;}
+    .wc:hover .wc-info{border-color:var(--orange);}
+    .wc-name{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--text);}
+    .wc-type{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-top:0.3rem;}
+    .wc-arrow{color:var(--orange);font-size:1rem;transition:transform 0.3s;}
+    .wc:hover .wc-arrow{transform:translate(3px,-3px);}
+    .wc-tag{position:absolute;top:1rem;left:1rem;font-size:0.58rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;padding:0.3rem 0.7rem;background:var(--orange);color:#fff;}
+
+    /* PROCESS */
+    #process{background:var(--orange);padding:9rem 5rem;}
+    #process .label{color:rgba(255,255,255,0.7);}
+    #process .heading{color:#fff;}
+    #process .rule{background:#fff;opacity:0.4;}
+    .process-head{text-align:center;margin-bottom:5.5rem;}
+    .process-head .rule{margin:1.5rem auto;}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.15);}
+    .step{background:var(--orange);padding:3rem 2.2rem;}
+    .step:hover{background:var(--orange-dark);}
+    .step-n{font-family:var(--serif);font-size:4rem;font-weight:900;color:rgba(255,255,255,0.15);line-height:1;margin-bottom:1.5rem;}
+    .step-name{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:0.8rem;}
+    .step-desc{font-size:0.8rem;color:rgba(255,255,255,0.7);line-height:1.7;}
+
+    /* CONTACT */
+    #contact{background:var(--bg);display:grid;grid-template-columns:1fr 1.1fr;gap:7rem;align-items:start;}
+    .contact-tagline{font-size:0.93rem;color:var(--muted);line-height:1.85;margin:1.5rem 0 3rem;}
+    .cinfo{display:flex;flex-direction:column;gap:1.8rem;}
+    .ci-label{font-size:0.62rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--orange);margin-bottom:0.3rem;}
+    .ci-val{font-size:0.88rem;color:var(--text);}
+    .cform{display:flex;flex-direction:column;gap:1.1rem;}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;}
+    .fg{display:flex;flex-direction:column;gap:0.45rem;}
+    .fl{font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);}
+    .fi,.fs,.ft{background:var(--bg2);border:1px solid var(--border);color:var(--text);font-family:var(--sans);font-size:0.87rem;font-weight:300;padding:0.95rem 1.1rem;outline:none;transition:border-color 0.3s;width:100%;}
+    .fi::placeholder{color:var(--subtle);}
+    .fi:focus,.fs:focus,.ft:focus{border-color:var(--orange);}
+    .fs option{background:var(--bg);}
+    .ft{resize:vertical;min-height:120px;}
+    .fsub{font-family:var(--sans);font-size:0.75rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#fff;background:var(--orange);border:none;padding:1.05rem 2.8rem;cursor:pointer;transition:background 0.3s;align-self:flex-start;}
+    .fsub:hover{background:var(--orange-dark);}
+
+    /* FOOTER */
+    footer{background:var(--text);padding:3.5rem 5rem;}
+    .ft-top{display:flex;justify-content:space-between;align-items:center;padding-bottom:2.5rem;margin-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,0.08);}
+    .ft-logo{font-family:var(--serif);font-size:1.6rem;font-weight:700;color:#fff;}
+    .ft-logo span{color:var(--orange);font-style:italic;}
+    .ft-tagline{font-size:0.75rem;letter-spacing:0.1em;color:rgba(255,255,255,0.4);}
+    .ft-links{display:flex;gap:2.5rem;}
+    .ft-links a{font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.3s;}
+    .ft-links a:hover{color:var(--orange);}
+    .ft-bottom{display:flex;justify-content:space-between;}
+    .ft-copy{font-size:0.7rem;color:rgba(255,255,255,0.25);}
+
+    @keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity 0.85s ease,transform 0.85s ease;}
     .reveal.visible{opacity:1;transform:none;}
-    @media(max-width:900px){
-      nav{padding:1rem 1.5rem;} .nav-links{display:none;}
-      section,#about,footer{padding-left:1.5rem!important;padding-right:1.5rem!important;}
-      #about{grid-template-columns:1fr;gap:3rem;} .services-grid,.work-grid,.process-steps{grid-template-columns:1fr;}
-      .form-row{grid-template-columns:1fr;} footer{flex-direction:column;gap:1.5rem;text-align:center;}
+    .d1{transition-delay:0.1s;}.d2{transition-delay:0.2s;}.d3{transition-delay:0.3s;}
+
+    @media(max-width:960px){
+      nav,footer{padding-left:1.5rem!important;padding-right:1.5rem!important;}
+      nav.scrolled{padding-left:1.5rem!important;padding-right:1.5rem!important;}
+      .nav-links{display:none;}
+      #home{grid-template-columns:1fr;}
+      .hero-left{padding:8rem 1.5rem 4rem;}
+      .hero-left::after{display:none;}
+      .hero-right{min-height:auto;padding:4rem 1.5rem;}
+      section,#about,#contact{padding-left:1.5rem!important;padding-right:1.5rem!important;}
+      #about,#contact{grid-template-columns:1fr;gap:3.5rem;}
+      .services-top,.work-top{flex-direction:column;gap:1.5rem;align-items:flex-start;}
+      .srow{grid-template-columns:1fr;gap:0.4rem;padding:1.8rem 0;}
+      .srow-price{text-align:left;}
+      .work-grid{grid-template-columns:1fr;}
+      .wc-a,.wc-b,.wc-c,.wc-d{grid-column:span 1;}
+      .steps{grid-template-columns:1fr 1fr;}
+      .form-row{grid-template-columns:1fr;}
+      .ft-top{flex-direction:column;gap:1.5rem;text-align:center;}
+      .ft-bottom{flex-direction:column;gap:0.8rem;text-align:center;}
     }
   </style>
 </head>
@@ -128,189 +188,179 @@
 <nav id="navbar">
   <a href="#home" class="nav-logo">AFK<span>Co.</span></a>
   <ul class="nav-links">
+    <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#work">Work</a></li>
-    <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Start a Project</a>
 </nav>
 
 <section id="home">
-  <div class="hero-grid"></div>
-  <div class="hero-content">
-    <div class="hero-tag">Available for new projects</div>
+  <div class="hero-left">
+    <div class="hero-eyebrow">Web Design Studio · Est. 2025</div>
     <h1 class="hero-title">
-      Websites<br>
-      that <span class="outline">work</span><br>
-      <span class="accent">for you.</span>
+      Your Business<br>
+      Deserves to<br>
+      Be <em>Seen.</em>
     </h1>
-    <p class="hero-sub">AFK Co. builds clean, fast, and professional websites for businesses in Antigua and across the Caribbean. We make you look as good online as you are in person.</p>
+    <p class="hero-sub">We craft premium, custom-built websites for businesses that refuse to be invisible. No templates. No shortcuts. Just exceptional work — delivered fast.</p>
     <div class="hero-actions">
-      <a href="#work" class="btn-main">See Our Work</a>
-      <a href="#contact" class="btn-ghost">Get a Free Quote</a>
+      <a href="#work" class="btn-fill">View Our Work</a>
+      <a href="#contact" class="btn-line-dark">Get a Free Quote</a>
     </div>
   </div>
-  <div class="hero-scroll-line">Scroll to explore</div>
+  <div class="hero-right">
+    <div class="hero-right-pattern"></div>
+    <div class="hero-right-eyebrow">Why AFK Co.</div>
+    <div class="hero-right-title">From a gamer's handle to a design studio.</div>
+    <div class="hero-right-sub">AFK — Away From Keyboard. Ironic for a web design business? Maybe. But the story is real, and real stories build trust. Based in Antigua, building for the world.</div>
+    <div class="hero-actions" style="margin-bottom:3rem;position:relative;z-index:2;">
+      <a href="#contact" class="btn-fill-inv">Start a Project</a>
+      <a href="#work" class="btn-line-white">See Work</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="hstat-num">48h</div><div class="hstat-label">First draft</div></div>
+      <div><div class="hstat-num">100%</div><div class="hstat-label">Custom code</div></div>
+      <div><div class="hstat-num">∞</div><div class="hstat-label">Revisions</div></div>
+      <div><div class="hstat-num">268</div><div class="hstat-label">Antiguan roots</div></div>
+    </div>
+  </div>
 </section>
 
-<div class="marquee-wrap">
-  <div class="marquee-track">
-    <div class="marquee-item"><span class="marquee-dot"></span>Web Design</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Based in Antigua</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Mobile Responsive</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Fast Delivery</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Custom Built</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Caribbean Businesses</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Web Design</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Based in Antigua</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Mobile Responsive</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Fast Delivery</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Custom Built</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Caribbean Businesses</div>
+<div class="ticker">
+  <div class="ticker-track">
+    <div class="ticker-item"><span class="ticker-dot"></span>Premium Web Design</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>Custom Built</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>Mobile First</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>Fast Delivery</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>Based in Antigua</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>No Templates</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>SEO Ready</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>Premium Web Design</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>Custom Built</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>Mobile First</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>Fast Delivery</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>Based in Antigua</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>No Templates</div>
+    <div class="ticker-item"><span class="ticker-dot"></span>SEO Ready</div>
   </div>
 </div>
 
-<section id="services">
-  <div class="section-header reveal">
-    <div class="section-num">01 — Services</div>
-    <h2 class="section-title">What we <span class="outline">build</span></h2>
+<section id="about">
+  <div class="reveal">
+    <div class="label">About AFK Co.</div>
+    <h2 class="heading">We don't build websites.<br>We build <em>presence.</em></h2>
+    <div class="rule"></div>
+    <p class="about-body">Most businesses settle for a generic template and call it done. We believe your website should be as unique as what you do — built from scratch, designed with intention, and crafted to convert visitors into loyal customers.</p>
+    <p class="about-body">Every project starts with a conversation and ends with a site you're proud to share. No rushing, no cutting corners, no disappearing after launch.</p>
   </div>
-  <div class="services-grid">
-    <div class="service-card reveal">
-      <div class="service-num">001</div>
-      <div class="service-icon">🏗</div>
-      <div class="service-name">Starter Site</div>
-      <p class="service-desc">Perfect for new businesses. A clean, professional 3-page website that gets you online fast. Mobile-friendly, contact form included.</p>
-      <div class="service-price">From $150 USD</div>
+  <div class="reveal d1">
+    <div class="about-quote-box">
+      <div class="about-quote">Every business deserves a website as good as any in the world.</div>
     </div>
-    <div class="service-card reveal">
-      <div class="service-num">002</div>
-      <div class="service-icon">⚡</div>
-      <div class="service-name">Business Site</div>
-      <p class="service-desc">A full 5-page website with SEO basics, social links, gallery, and everything a growing business needs to stand out online.</p>
-      <div class="service-price">From $300 USD</div>
+    <div class="about-stats">
+      <div class="astat"><div class="astat-num">100%</div><div class="astat-label">Custom code</div></div>
+      <div class="astat"><div class="astat-num">48h</div><div class="astat-label">First draft</div></div>
+      <div class="astat"><div class="astat-num">∞</div><div class="astat-label">Revisions</div></div>
+      <div class="astat"><div class="astat-num">268</div><div class="astat-label">Antiguan roots</div></div>
     </div>
-    <div class="service-card reveal">
-      <div class="service-num">003</div>
-      <div class="service-icon">🚀</div>
-      <div class="service-name">Premium Build</div>
-      <p class="service-desc">Custom animations, Google Analytics, booking forms, blog, and more. Built for businesses serious about their online presence.</p>
-      <div class="service-price">From $500 USD</div>
-    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="services-top reveal">
+    <div><div class="label">What We Offer</div><h2 class="heading">Services</h2></div>
+    <a href="#contact" class="btn-line-dark">Discuss Your Project</a>
+  </div>
+  <div class="service-list">
+    <div class="srow reveal"><div class="srow-num">001</div><div class="srow-name">Starter Site</div><div class="srow-desc">3 pages, contact form, fully mobile-friendly. Everything you need to get online and look professional from day one.</div><div class="srow-price">From $150</div></div>
+    <div class="srow reveal"><div class="srow-num">002</div><div class="srow-name">Business Site</div><div class="srow-desc">5 pages, SEO basics, gallery, social media links. Built for businesses ready to grow their digital presence.</div><div class="srow-price">From $300</div></div>
+    <div class="srow reveal"><div class="srow-num">003</div><div class="srow-name">Premium Build</div><div class="srow-desc">Fully custom design, animations, booking systems, Google Analytics. For businesses that take their online presence seriously.</div><div class="srow-price">From $500</div></div>
+    <div class="srow reveal"><div class="srow-num">004</div><div class="srow-name">Maintenance</div><div class="srow-desc">Monthly updates, security monitoring, backups and support. We keep your site running so you can focus on your business.</div><div class="srow-price">From $50/mo</div></div>
   </div>
 </section>
 
 <section id="work">
-  <div class="section-header reveal">
-    <div class="section-num">02 — Work</div>
-    <h2 class="section-title">Recent <span class="outline">projects</span></h2>
+  <div class="work-top reveal">
+    <div><div class="label">Portfolio</div><h2 class="heading">Selected <em>Work</em></h2></div>
+    <a href="#contact" class="btn-line-dark">Start Your Project</a>
   </div>
   <div class="work-grid">
-    <div class="work-card reveal">
-      <div class="work-card-badge">Restaurant</div>
-      <div class="work-card-img"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&auto=format&fit=crop" alt="Ember and Salt"/></div>
-      <div class="work-card-info">
-        <div><div class="work-card-name">Ember &amp; Salt</div><div class="work-card-tag">Caribbean Grill · St. John's, Antigua</div></div>
-        <div class="work-card-arrow">↗</div>
-      </div>
-    </div>
-    <div class="work-card reveal">
-      <div class="work-card-badge">In Progress</div>
-      <div class="work-card-img"><img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=900&auto=format&fit=crop" alt="Barbershop"/></div>
-      <div class="work-card-info">
-        <div><div class="work-card-name">The Cut Room</div><div class="work-card-tag">Barbershop · Coming Soon</div></div>
-        <div class="work-card-arrow">↗</div>
-      </div>
-    </div>
-    <div class="work-card reveal">
-      <div class="work-card-badge">In Progress</div>
-      <div class="work-card-img"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=900&auto=format&fit=crop" alt="Guesthouse"/></div>
-      <div class="work-card-info">
-        <div><div class="work-card-name">Coral Bay Stays</div><div class="work-card-tag">Guesthouse · Coming Soon</div></div>
-        <div class="work-card-arrow">↗</div>
-      </div>
-    </div>
-    <div class="work-card reveal">
-      <div class="work-card-badge">In Progress</div>
-      <div class="work-card-img"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=900&auto=format&fit=crop" alt="Auto Detail"/></div>
-      <div class="work-card-info">
-        <div><div class="work-card-name">Island Auto Detail</div><div class="work-card-tag">Auto Detailing · Coming Soon</div></div>
-        <div class="work-card-arrow">↗</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="about">
-  <div class="about-left reveal">
-    <div class="about-tag">03 — About</div>
-    <h2 class="about-title">AFK — Away From Keyboard. Ironic? A little.</h2>
-    <p class="about-body">AFK Co. started as a gamer's handle and grew into a web design business rooted right here in Antigua. The name stuck because the story behind it is real — and real stories build trust.</p>
-    <p class="about-body">We build websites for Caribbean businesses that want to be taken seriously online. Clean code, honest pricing, and no corporate runaround — just results.</p>
-    <div class="about-stats">
-      <div><div class="stat-val">100%</div><div class="stat-label">Custom built</div></div>
-      <div><div class="stat-val">268</div><div class="stat-label">Antiguan roots</div></div>
-    </div>
-  </div>
-  <div class="reveal" style="position:relative;">
-    <div class="about-accent"></div>
-    <div class="about-box">
-      <div class="about-box-tag">Our belief</div>
-      <div class="about-box-quote">Every business in Antigua deserves a website as good as <span>any in the world.</span></div>
-      <div class="about-box-sub">— AFK Co., St. John's, Antigua</div>
-    </div>
+    <div class="wc wc-a reveal"><div class="wc-tag">Live</div><div class="wc-img"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&auto=format&fit=crop" alt="Ember and Salt"/></div><div class="wc-info"><div><div class="wc-name">Ember &amp; Salt</div><div class="wc-type">Restaurant · St. John's, Antigua</div></div><div class="wc-arrow">↗</div></div></div>
+    <div class="wc wc-b reveal d1"><div class="wc-tag">Soon</div><div class="wc-img"><img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=900&auto=format&fit=crop" alt="Barbershop"/></div><div class="wc-info"><div><div class="wc-name">The Cut Room</div><div class="wc-type">Barbershop · In Progress</div></div><div class="wc-arrow">↗</div></div></div>
+    <div class="wc wc-c reveal"><div class="wc-tag">Soon</div><div class="wc-img"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=900&auto=format&fit=crop" alt="Guesthouse"/></div><div class="wc-info"><div><div class="wc-name">Coral Bay Stays</div><div class="wc-type">Guesthouse · In Progress</div></div><div class="wc-arrow">↗</div></div></div>
+    <div class="wc wc-d reveal d1"><div class="wc-tag">Soon</div><div class="wc-img"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=900&auto=format&fit=crop" alt="Auto Detail"/></div><div class="wc-info"><div><div class="wc-name">Island Auto Detail</div><div class="wc-type">Auto Detailing · In Progress</div></div><div class="wc-arrow">↗</div></div></div>
   </div>
 </section>
 
 <section id="process">
-  <div class="section-header reveal">
-    <div class="section-num">04 — Process</div>
-    <h2 class="section-title">How it <span class="outline">works</span></h2>
+  <div class="process-head reveal">
+    <div class="label">How It Works</div>
+    <h2 class="heading">Simple. <em style="color:#fff;opacity:0.6;">Straightforward.</em> Done.</h2>
+    <div class="rule"></div>
   </div>
-  <div class="process-steps">
-    <div class="step reveal"><div class="step-num">01</div><div class="step-name">Discovery Call</div><p class="step-desc">We talk about your business, your goals, and what you need. Free, no commitment, no pressure.</p></div>
-    <div class="step reveal"><div class="step-num">02</div><div class="step-name">Design & Build</div><p class="step-desc">We design and build your site. You'll see a preview before anything goes live and can request changes.</p></div>
-    <div class="step reveal"><div class="step-num">03</div><div class="step-name">Review & Refine</div><p class="step-desc">You review the site, we make any adjustments. We don't stop until you're happy with every detail.</p></div>
-    <div class="step reveal"><div class="step-num">04</div><div class="step-name">Launch & Support</div><p class="step-desc">Your site goes live. We handle the domain and hosting setup and stay available if you need anything.</p></div>
+  <div class="steps">
+    <div class="step reveal"><div class="step-n">01</div><div class="step-name">Discovery</div><p class="step-desc">We talk about your business, your goals, and what you need. Free consultation, zero pressure.</p></div>
+    <div class="step reveal d1"><div class="step-n">02</div><div class="step-name">Design & Build</div><p class="step-desc">We build your first draft within 48 hours. You see everything before anything is finalized.</p></div>
+    <div class="step reveal d2"><div class="step-n">03</div><div class="step-name">Revise</div><p class="step-desc">We refine until you're completely happy. Unlimited revisions, no extra charge, no rushing.</p></div>
+    <div class="step reveal d3"><div class="step-n">04</div><div class="step-name">Launch</div><p class="step-desc">We handle the domain, hosting, and go-live. Your site is live and your business is online.</p></div>
   </div>
 </section>
 
 <section id="contact">
-  <div class="contact-inner">
-    <div class="section-num reveal">05 — Contact</div>
-    <h2 class="contact-title reveal">Let's build<br>something <span>real.</span></h2>
-    <div class="contact-form reveal">
+  <div class="contact-left reveal">
+    <div class="label">Get In Touch</div>
+    <h2 class="heading">Let's build<br>something <em>great.</em></h2>
+    <div class="rule"></div>
+    <p class="contact-tagline">Whether you need a simple landing page or a full business website — we're ready. Tell us about your project and we'll get back to you within 24 hours.</p>
+    <div class="cinfo">
+      <div><div class="ci-label">Email</div><div class="ci-val">hello@afkco.com</div></div>
+      <div><div class="ci-label">WhatsApp</div><div class="ci-val">+1 (268) 555-0100</div></div>
+      <div><div class="ci-label">Based In</div><div class="ci-val">St. John's, Antigua and Barbuda</div></div>
+    </div>
+  </div>
+  <div class="reveal d1">
+    <div class="cform">
       <div class="form-row">
-        <div class="form-group"><label class="form-label">Your Name</label><input type="text" class="form-input" placeholder="John Smith"/></div>
-        <div class="form-group"><label class="form-label">Business Name</label><input type="text" class="form-input" placeholder="Smith & Co."/></div>
+        <div class="fg"><label class="fl">Your Name</label><input type="text" class="fi" placeholder="John Smith"/></div>
+        <div class="fg"><label class="fl">Business Name</label><input type="text" class="fi" placeholder="Smith & Co."/></div>
       </div>
-      <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="you@yourbusiness.com"/></div>
-      <div class="form-group"><label class="form-label">Business Type</label>
-        <select class="form-select">
-          <option>Restaurant / Cafe</option><option>Barbershop / Salon</option>
-          <option>Guesthouse / Tourism</option><option>Auto / Detailing</option>
-          <option>Retail / Boutique</option><option>Other</option>
+      <div class="fg"><label class="fl">Email Address</label><input type="email" class="fi" placeholder="you@yourbusiness.com"/></div>
+      <div class="fg"><label class="fl">Service Needed</label>
+        <select class="fs">
+          <option value="">Select a package</option>
+          <option>Starter Site — from $150</option>
+          <option>Business Site — from $300</option>
+          <option>Premium Build — from $500</option>
+          <option>Monthly Maintenance — from $50/mo</option>
+          <option>Not sure yet</option>
         </select>
       </div>
-      <div class="form-group"><label class="form-label">Tell me about your project</label><textarea class="form-textarea" placeholder="What do you need? Budget? Timeline?"></textarea></div>
-      <button class="form-submit">Send Message</button>
+      <div class="fg"><label class="fl">About Your Project</label><textarea class="ft" placeholder="What does your business do? What do you need?"></textarea></div>
+      <button class="fsub">Send Message →</button>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="footer-logo">AFK<span>Co.</span></div>
-  <div class="footer-mid">2025 AFK Co. · St. John's, Antigua and Barbuda</div>
-  <div class="footer-links"><a href="#">Instagram</a><a href="#">WhatsApp</a><a href="#contact">Email</a></div>
+  <div class="ft-top">
+    <div class="ft-logo">AFK<span>Co.</span></div>
+    <div class="ft-tagline">Premium Web Design · Est. 2025 · Antigua &amp; Barbuda</div>
+    <div class="ft-links"><a href="#">Instagram</a><a href="#">WhatsApp</a><a href="#contact">Email</a></div>
+  </div>
+  <div class="ft-bottom">
+    <div class="ft-copy">© 2025 AFK Co. All rights reserved.</div>
+    <div class="ft-copy">St. John's, Antigua and Barbuda</div>
+  </div>
 </footer>
 
 <script>
   const nav=document.getElementById('navbar');
-  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60));
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>80));
   const obs=new IntersectionObserver(entries=>{
     entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
-  },{threshold:0.1});
+  },{threshold:0.08});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
 </body>
